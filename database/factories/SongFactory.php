@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Song;
+use App\Models\Album;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SongFactory extends Factory
@@ -22,7 +23,12 @@ class SongFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'album_id' => Album::factory(),
+            'name' => $this->faker->unique(true)->catchPhrase(),
+            'artist' => $this->faker->name(),
+            'metadata'=> json_encode([
+                'cover' => '',
+                'gener' => 'pop'])
         ];
     }
 }

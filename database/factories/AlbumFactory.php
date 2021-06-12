@@ -22,7 +22,13 @@ class AlbumFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->unique(true)->catchPhrase(),
+            'artist' => $this->faker->name(),
+            'metadata'=> json_encode([
+                'year' => $this->faker->numberBetween(1990,2020),
+                'cover' => '',
+                'gener' => 'pop'
+            ])
         ];
     }
 }
